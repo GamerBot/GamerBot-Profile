@@ -30,6 +30,9 @@ module.exports = (robot) ->
 
     return profile
 
+  robot.on "profile.register", (attribute) ->
+    attributes[attribute] = attribute
+
   robot.hear /^[\.!]me set (\w+)\s+(.*)$/i, (msg) ->
     nick = msg.message.user.name.toLowerCase()
     [ __, attribute, value ] = msg.match
