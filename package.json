@@ -1,7 +1,7 @@
 {
   "name": "marvin-profile",
   "description": "Store profile type information for a user",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "author": "Shawn Sorichetti <ssoriche@gmail.com>",
   "license": "MIT",
   "keywords": "hubot, hubot-scripts, profile, user",
