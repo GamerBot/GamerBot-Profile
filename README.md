@@ -1,20 +1,20 @@
-# hubot-marvin-profile
+# GamerBot-profile
 
 Store profile type information for a user
 
-See [`src/marvin-profile.coffee`](src/marvin-profile.coffee) for full documentation.
+See [`src/GamerBot-profile.coffee`](src/GamerBot-profile.coffee) for full documentation.
 
 ## Installation
 
 In hubot project repo, run:
 
-`npm install marvin-profile --save`
+`npm install GamerBot-profile --save`
 
-Then add **marvin-profile** to your `external-scripts.json`:
+Then add **GamerBot-profile** to your `external-scripts.json`:
 
 ```json
 [
-  "marvin-profile"
+  "GamerBot-profile"
 ]
 ```
 
