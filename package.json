@@ -31,7 +31,7 @@
     "sinon": "^1.13.0",
     "sinon-chai": "^2.7.0"
   },
-  "main": "index.coffee",
+  "main": "src/GamerBot-profile.coffee",
   "scripts": {
     "test": "grunt test"
   }
