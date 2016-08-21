@@ -11,6 +11,10 @@
 #
 #   .me profile realname - show only realname from  profile
 #
+#   .me platforms - list gaming platforms
+#   .me platform add ps4 as psnid - add PS4 with PSN ID
+#   .me platform remove ps4 - remove PS4 platform
+#
 # Author:
 #   Shawn Sorichetti <ssoriche@gmail.com>
 
@@ -74,6 +78,42 @@ module.exports = (robot) ->
     if profile != ""
       msg.send "```" + profile + "```"
     msg.finish()
+
+  robot.hear /^[\.!]me plat(?:forms?)?\s+(add|re?m(?:ove)?)\s+(\w+)(?:\s+as)?(?:\s+(\w+))?$/i, (msg) ->
+    nick = msg.message.user.name.toLowerCase()
+    [ __, cmd, platform, id ] = msg.match
+
+    platforms = robot.brain.get "profile.#{nick}.platforms"
+    platform = platform.toUpperCase()
+
+    if !platforms
+      platforms = {}
+
+    if cmd == 'add'
+      platforms[platform] = if id then id else platform
+      robot.brain.set "profile.#{nick}.platforms", platforms
+      msg.send "#{platform} added to your platforms"
+    else if cmd = /re?m(?:ove)?/i
+      delete platforms[platform]
+      robot.brain.set "profile.#{nick}.platforms", platforms
+      msg.send "#{platform} removed from your platforms"
+
+  robot.hear /^[\.!]me plat(?:forms?)?$/i, (msg) ->
+    nick = msg.message.user.name.toLowerCase()
+    platform_list = robot.brain.get "profile.#{nick}.platforms"
+    platform_list = if platform_list then platform_list else {}
+    platforms = ""
+
+    for platform in Object.keys(platform_list)
+      if platform_list[platform] == platform
+        platforms += "#{platform}\n"
+      else
+        platforms += "#{platform} ... #{platform_list[platform]}\n"
+
+    if platforms.length > 0
+      msg.send "```Platforms:\n#{platforms}```"
+    else
+      msg.send "No added platforms"
 
   robot.hear /^[\.!]me$/i, (msg) ->
     nick = msg.message.user.name.toLowerCase()

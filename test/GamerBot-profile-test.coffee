@@ -33,3 +33,51 @@ describe 'GamerBot-profile', ->
         [ "hubot", "Setting your twitter to bobshadey" ]
       ]
 
+  it 'sets platforms', ->
+    @room.user.say('bob','.me plat add XBONE').then =>
+      expect(@room.messages).to.eql [
+        [ "bob",".me plat add XBONE" ]
+        [ "hubot", "XBONE added to your platforms" ]
+      ]
+    @room.user.say('bob','.me platforms').then =>
+      expect(@room.messages).to.eql [
+        [ "bob",".me plat add XBONE" ]
+        [ "bob",".me platforms" ]
+        [ "hubot", "XBONE added to your platforms" ]
+        [ "hubot", "```Platforms:\nXBONE\n```" ]
+      ]
+
+  it 'sets platforms w/ID', ->
+    @room.user.say('bob','.me plat add XBONE as bobxbox').then =>
+      expect(@room.messages).to.eql [
+        [ "bob",".me plat add XBONE as bobxbox" ]
+        [ "hubot", "XBONE added to your platforms" ]
+      ]
+    @room.user.say('bob','.me platforms').then =>
+      expect(@room.messages).to.eql [
+        [ "bob",".me plat add XBONE as bobxbox" ]
+        [ "bob",".me platforms" ]
+        [ "hubot", "XBONE added to your platforms" ]
+        [ "hubot", "```Platforms:\nXBONE ... bobxbox\n```" ]
+      ]
+
+  it 'has no platforms', ->
+    @room.user.say('bob','.me plat').then =>
+      expect(@room.messages).to.eql [
+        [ "bob",".me plat" ]
+        [ "hubot", "No added platforms" ]
+      ]
+
+  it 'removes platforms', ->
+    @room.user.say('bob','.me plat add XBONE as bobxbox').then =>
+      expect(@room.messages).to.eql [
+        [ "bob",".me plat add XBONE as bobxbox" ]
+        [ "hubot", "XBONE added to your platforms" ]
+      ]
+    @room.user.say('bob','.me platforms rm XBONE').then =>
+      expect(@room.messages).to.eql [
+        [ "bob",".me plat add XBONE as bobxbox" ]
+        [ "bob",".me platforms rm XBONE" ]
+        [ "hubot", "XBONE added to your platforms" ]
+        [ "hubot", "XBONE removed from your platforms" ]
+      ]
