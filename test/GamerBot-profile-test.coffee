@@ -2,6 +2,7 @@ Helper = require 'hubot-test-helper'
 helper = new Helper('../src/GamerBot-profile.coffee')
 
 expect = require('chai').expect
+Profile = require('../src/Profile.coffee')
 
 describe 'GamerBot-profile', ->
   beforeEach ->
@@ -81,3 +82,12 @@ describe 'GamerBot-profile', ->
         [ "hubot", "XBONE added to your platforms" ]
         [ "hubot", "XBONE removed from your platforms" ]
       ]
+  it 'checks platforms', ->
+    @room.user.say('bob','.me plat add XBONE').then =>
+      expect(@room.messages).to.eql [
+        [ "bob",".me plat add XBONE" ]
+        [ "hubot", "XBONE added to your platforms" ]
+      ]
+      profile = new Profile @room.robot
+      expect(profile.check_platform('bob','xbone')).to.be.ok
+      expect(profile.check_platform('bob','psn')).to.not.be.ok
