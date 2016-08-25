@@ -98,4 +98,19 @@ class Profile
 
     return platform_list
 
+  match_platforms: (nick, game_platforms) ->
+    a = Object.keys(@get_platforms(nick))
+    b = game_platforms
+    t = []
+
+    if b.length > a.length
+      t = b
+      b = a
+      a = t
+
+    a.filter (e) ->
+      if b.indexOf(e) != -1
+        return true
+      return
+
 module.exports = Profile

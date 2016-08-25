@@ -91,3 +91,5 @@ describe 'GamerBot-profile', ->
       profile = new Profile @room.robot
       expect(profile.check_platform('bob','xbone')).to.be.ok
       expect(profile.check_platform('bob','psn')).to.not.be.ok
+      expect(profile.match_platforms('bob',['XBONE'])).to.eql ['XBONE']
+      expect(profile.match_platforms('bob',['PS4'])).to.eql []
