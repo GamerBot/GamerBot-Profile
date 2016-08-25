@@ -26,6 +26,17 @@ describe 'GamerBot-profile', ->
           "Invalid profile setting notexist. Valid settings: realname, twitter, email, battlenet, test"
         ]
       ]
+    @room.user.say('bob','.me get test').then =>
+      expect(@room.messages).to.eql [
+        [ "bob",".me get notexist" ]
+        [ "bob",".me set test done" ]
+        [ "bob",".me get test" ]
+        [ "hubot", "Setting your test to done" ]
+        [ "hubot",
+          "Invalid profile setting notexist. Valid settings: realname, twitter, email, battlenet, test"
+        ]
+        [ "hubot", "done" ]
+      ]
 
   it 'set twitter handle', ->
     @room.user.say('bob','.me set twitter bobshadey').then =>
