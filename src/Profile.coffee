@@ -35,9 +35,9 @@ class Profile
     profile = ""
 
     for attribute in Object.keys(@attributes)
-      if robot.brain.get "profile.#{nick}.#{attribute}"
+      if @robot.brain.get "profile.#{nick}.#{attribute}"
         profile += "#{attribute} - "
-        profile += robot.brain.get "profile.#{nick}.#{attribute}"
+        profile += @robot.brain.get "profile.#{nick}.#{attribute}"
         profile += "\n"
 
     return profile
