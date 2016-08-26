@@ -1,20 +1,20 @@
-# GamerBot-profile
+# GamerBot-Profile
 
 Store profile type information for a user
 
-See [`src/GamerBot-profile.coffee`](src/GamerBot-profile.coffee) for full documentation.
+See [`src/GamerBot-Profile.coffee`](src/GamerBot-Profile.coffee) for full documentation.
 
 ## Installation
 
 In hubot project repo, run:
 
-`npm install GamerBot-profile --save`
+`npm install GamerBot-Profile --save`
 
-Then add **GamerBot-profile** to your `external-scripts.json`:
+Then add **GamerBot-Profile** to your `external-scripts.json`:
 
 ```json
 [
-  "GamerBot-profile"
+  "GamerBot-Profile"
 ]
 ```
 

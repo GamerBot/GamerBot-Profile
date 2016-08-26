@@ -1,10 +1,10 @@
 Helper = require 'hubot-test-helper'
-helper = new Helper('../src/GamerBot-profile.coffee')
+helper = new Helper('../src/GamerBot-Profile.coffee')
 
 expect = require('chai').expect
 Profile = require('../src/Profile.coffee')
 
-describe 'GamerBot-profile', ->
+describe 'GamerBot-Profile', ->
   beforeEach ->
     @room = helper.createRoom(httpd: false)
 

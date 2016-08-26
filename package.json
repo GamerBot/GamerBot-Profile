@@ -1,5 +1,5 @@
 {
-  "name": "GamerBot-profile",
+  "name": "GamerBot-Profile",
   "description": "Store profile type information for a user",
   "version": "0.0.1",
   "author": "Shawn Sorichetti <ssoriche@gmail.com>",
@@ -7,10 +7,10 @@
   "keywords": "hubot, hubot-scripts, profile, GamerBot",
   "repository": {
     "type": "git",
-    "url": "git://github.com/ssoriche/GamerBot-profile.git"
+    "url": "git://github.com/GamerBot/GamerBot-Profile.git"
   },
   "bugs": {
-    "url": "https://github.com/ssoriche/GamerBot-profile/issues"
+    "url": "https://github.com/GamerBot/GamerBot-Profile/issues"
   },
   "dependencies": {},
   "peerDependencies": {
